@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The Laundry & Co, Islamabad. Dry cleaning, steam ironing, household laundry and a 24/7 laundromat. Step inside and run a machine." />
+    <meta name="theme-color" content="#042940" />
+    <title>The Laundry &amp; Co | Fresh clothes, fresh life</title>
+    <script>
+      // Set the theme before first paint.
+      (function () {
+        var theme;
+        try { theme = localStorage.getItem('lc-theme'); } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        window.__splashStart = performance.now();
+      })();
+    </script>
+    <style>
+      #splash { position: fixed; inset: 0; z-index: 1000; display: grid; place-content: center; justify-items: center; gap: 22px; background: #042940; color: #fff; font-family: 'Bricolage Grotesque Variable', 'Inter Variable', system-ui, sans-serif; clip-path: circle(150% at 50% 44%); transition: clip-path 0.85s cubic-bezier(0.76, 0, 0.24, 1); }
+      #splash.is-leaving { clip-path: circle(0% at 50% 44%); pointer-events: none; }
+      .sp-stage { perspective: 1100px; }
+      .sp-machine { position: relative; width: 168px; height: 196px; border-radius: 26px; background: linear-gradient(160deg, #f7fafc, #c9d7e0 65%, #a9bac6); box-shadow: 0 34px 70px -28px rgb(0 168 220 / 0.6); transform-style: preserve-3d; animation: sp-rock 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+      .sp-panel { position: absolute; left: 14px; right: 14px; top: 14px; height: 30px; border-radius: 10px; background: #042940; display: flex; align-items: center; justify-content: space-between; padding: 0 11px; }
+      .sp-panel b { width: 9px; height: 9px; border-radius: 50%; background: #4cc4ea; box-shadow: 0 0 10px 2px #4cc4ea; animation: sp-blink 0.7s ease-in-out infinite alternate; }
+      .sp-steps { position: relative; width: 62px; height: 12px; overflow: hidden; }
+      .sp-steps i { position: absolute; inset: 0; font: 700 11px/12px ui-monospace, Menlo, monospace; letter-spacing: 0.08em; color: #4cc4ea; font-style: normal; opacity: 0; animation: sp-step 4.2s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .sp-steps i:nth-child(2) { animation-delay: 1.4s; }
+      .sp-steps i:nth-child(3) { animation-delay: 2.8s; }
+      .sp-door { position: absolute; left: 24px; top: 58px; width: 120px; height: 120px; border-radius: 50%; border: 11px solid #e6eef3; box-shadow: 0 0 0 2px #8b9fad, inset 0 0 0 2px #8b9fad; background: #021723; overflow: hidden; }
+      .sp-water { position: absolute; left: -50%; top: 46%; width: 200%; height: 200%; border-radius: 43%; background: #00a8dc; animation: sp-spin 2.8s linear infinite; }
+      .sp-water + .sp-water { top: 52%; border-radius: 40%; background: rgb(76 196 234 / 0.6); animation-duration: 4.2s; animation-direction: reverse; }
+      .sp-bubble { position: absolute; bottom: 30%; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #fff; animation: sp-rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+      .sp-name { margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+      .sp-name span { color: #8fb6c9; }
+      .sp-strap { margin: -10px 0 0; font: 700 12px/1 'Inter Variable', system-ui, sans-serif; letter-spacing: 0.3em; text-transform: uppercase; color: #b9e9f8; }
+      #splash-retry { display: none; padding: 12px 22px; border: 0; border-radius: 50px; background: #00a8dc; color: #021723; font: 700 15px/1 system-ui, sans-serif; cursor: pointer; }
+      #splash.is-stuck #splash-retry { display: block; }
+      @keyframes sp-rock { 0%, 100% { transform: rotateY(-9deg) rotate(-1.5deg); } 50% { transform: rotateY(9deg) rotate(1.5deg); } }
+      @keyframes sp-spin { to { transform: rotate(360deg); } }
+      @keyframes sp-blink { from { opacity: 0.4; } }
+      @keyframes sp-step { 0% { opacity: 0; transform: translateY(100%); } 6%, 30% { opacity: 1; transform: none; } 36%, 100% { opacity: 0; transform: translateY(-100%); } }
+      @keyframes sp-rise { 0% { transform: translateY(0) scale(0.4); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-46px) scale(1); opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { #splash, #splash * { animation: none !important; transition: none !important; } .sp-steps i:first-child { opacity: 1; } }
+    </style>
+    <link rel="preload" as="image" href="/img/woman-walk.webp" type="image/webp" />
+  </head>
+  <body>
+    <div id="splash" role="status" aria-label="Loading The Laundry & Co">
+      <div class="sp-stage" aria-hidden="true">
+        <div class="sp-machine">
+          <div class="sp-panel">
+            <span class="sp-steps"><i>WASH</i><i>RINSE</i><i>SPIN</i></span>
+            <b></b>
+          </div>
+          <div class="sp-door">
+            <span class="sp-water"></span>
+            <span class="sp-water"></span>
+            <span class="sp-bubble" style="left: 28%"></span>
+            <span class="sp-bubble" style="left: 52%; animation-delay: 0.5s"></span>
+            <span class="sp-bubble" style="left: 70%; animation-delay: 0.9s"></span>
+          </div>
+        </div>
+      </div>
+      <p class="sp-name"><span>The</span> Laundry &amp; Co</p>
+      <p class="sp-strap">Fresh clothes, fresh life</p>
+      <button id="splash-retry" type="button" onclick="location.reload()">Try again</button>
+    </div>
+    <script>
+      // Failsafe: if the app never takes the splash down, offer a way out.
+      setTimeout(function () {
+        var splash = document.getElementById('splash');
+        if (splash && !splash.classList.contains('is-leaving')) splash.classList.add('is-stuck');
+      }, 15000);
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

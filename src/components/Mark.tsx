@@ -1,0 +1,23 @@
+import { useId } from 'react';
+
+/** The drum-and-wave mark. */
+export function Mark({ className = 'mark' }: { className?: string }) {
+  const clip = useId();
+  return (
+    <svg className={className} viewBox="0 0 48 48" aria-hidden="true">
+      <rect width="48" height="48" rx="13" fill="#042940" />
+      <rect x="9" y="5" width="9" height="2.6" rx="1.3" fill="#00a8dc" />
+      <circle cx="38" cy="6.3" r="1.5" fill="#fff" />
+      <circle cx="24" cy="26" r="14.5" fill="#fff" />
+      <circle cx="24" cy="26" r="11.5" fill="#e6f6fc" />
+      <clipPath id={clip}>
+        <circle cx="24" cy="26" r="11.5" />
+      </clipPath>
+      <g clipPath={`url(#${clip})`}>
+        <path d="M8 28c4-4 7-4 10-1s6 3 9-1 6-3 13 1v14H8z" fill="#00a8dc" />
+      </g>
+      <circle cx="19" cy="20" r="1.6" fill="#00a8dc" />
+      <circle cx="23" cy="17.5" r="1" fill="#00a8dc" />
+    </svg>
+  );
+}
